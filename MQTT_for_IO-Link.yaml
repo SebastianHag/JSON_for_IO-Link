@@ -32,20 +32,11 @@ channels:
       startup/"birth" and as "lastwill"
     parameters:
       originatorId:
-        description: >-
-          shall be the unique identifier of the originator and shall correspond
-          to the client id inside the MQTT message. It can be the ProductURI,
-          DNS name, IP address or MAC address of the device hosting the MQTT
-          publisher. By default the Hostname shall be used.
-        schema:
-          type: string
-          example: iomaster_nr1
-      deviceId:
-        description: 'Id of the device (e.g.  (i.e. an IO-Link device, an IO-Port number)'
-        schema:
-          type: string
-          example: port1
+        $ref: '#/components/parameters/originatorId'
     subscribe:
+      description: >-
+        contains the mqtt connection status of the gateway
+      operationId: receiveConnectionStatus
       message:
         $ref: '#/components/messages/connection'
       bindings:
@@ -58,15 +49,11 @@ channels:
       onChange
     parameters:
       originatorId:
-        description: >-
-          shall be the unique identifier of the originator and shall correspond
-          to the client id inside the MQTT message. It can be the ProductURI,
-          DNS name, IP address or MAC address of the device hosting the MQTT
-          publisher. By default the Hostname shall be used.
-        schema:
-          type: string
-          example: iomaster_nr1
+        $ref: '#/components/parameters/originatorId'
     subscribe:
+      description: >-
+        contains general nameplate information of the gateway
+      operationId: receiveGatewayInfo
       message:
         $ref: '#/components/messages/nameplate'
       bindings:
@@ -77,15 +64,11 @@ channels:
     description: publishes gateway health state
     parameters:
       originatorId:
-        description: >-
-          shall be the unique identifier of the originator and shall correspond
-          to the client id inside the MQTT message. It can be the ProductURI,
-          DNS name, IP address or MAC address of the device hosting the MQTT
-          publisher. By default the Hostname shall be used.
-        schema:
-          type: string
-          example: iomaster_nr1
+        $ref: '#/components/parameters/originatorId'
     subscribe:
+      description: >-
+        contains general health information of the gateway
+      operationId: receiveGatewayHealth
       message:
         $ref: '#/components/messages/gatewayhealth'
       bindings:
@@ -98,20 +81,13 @@ channels:
       startup (new connection)
     parameters:
       originatorId:
-        description: >-
-          shall be the unique identifier of the originator and shall correspond
-          to the client id inside the MQTT message. It can be the ProductURI,
-          DNS name, IP address or MAC address of the device hosting the MQTT
-          publisher. By default the Hostname shall be used.
-        schema:
-          type: string
-          example: iomaster_nr1
+        $ref: '#/components/parameters/originatorId'
       deviceId:
-        description: 'Id of the device (e.g.  (i.e. an IO-Link device, an IO-Port number)'
-        schema:
-          type: string
-          example: port1
+        $ref: '#/components/parameters/deviceId'
     subscribe:
+      description: >-
+        contains general information of the connected device
+      operationId: receiveDeviceInfo
       message:
         $ref: '#/components/messages/nameplate_iolink'
       bindings:
@@ -122,20 +98,13 @@ channels:
     description: 'publishes the port status, send at startup/onChange'
     parameters:
       originatorId:
-        description: >-
-          shall be the unique identifier of the originator and shall correspond
-          to the client id inside the MQTT message. It can be the ProductURI,
-          DNS name, IP address or MAC address of the device hosting the MQTT
-          publisher. By default the Hostname shall be used.
-        schema:
-          type: string
-          example: iomaster_nr1
+        $ref: '#/components/parameters/originatorId'
       deviceId:
-        description: 'Id of the device (e.g.  (i.e. an IO-Link device, an IO-Port number)'
-        schema:
-          type: string
-          example: port1
+        $ref: '#/components/parameters/deviceId'
     subscribe:
+      description: >-
+        contains status information of the connected device
+      operationId: receiveDeviceStaus
       message:
         $ref: '#/components/messages/portstatus'
       bindings:
@@ -146,20 +115,13 @@ channels:
     description: health data of the device
     parameters:
       originatorId:
-        description: >-
-          shall be the unique identifier of the originator and shall correspond
-          to the client id inside the MQTT message. It can be the ProductURI,
-          DNS name, IP address or MAC address of the device hosting the MQTT
-          publisher. By default the Hostname shall be used.
-        schema:
-          type: string
-          example: iomaster_nr1
+        $ref: '#/components/parameters/originatorId'
       deviceId:
-        description: 'Id of the device (e.g.  (i.e. an IO-Link device, an IO-Port number)'
-        schema:
-          type: string
-          example: port1
+        $ref: '#/components/parameters/deviceId'
     subscribe:
+      description: >-
+        contains health information of the connected device
+      operationId: receiveDeviceHealth
       message:
         $ref: '#/components/messages/devicehealth'
       bindings:
@@ -169,20 +131,13 @@ channels:
   '{originatorId}/{deviceId}/processData':
     parameters:
       originatorId:
-        description: >-
-          shall be the unique identifier of the originator and shall correspond
-          to the client id inside the MQTT message. It can be the ProductURI,
-          DNS name, IP address or MAC address of the device hosting the MQTT
-          publisher. By default the Hostname shall be used.
-        schema:
-          type: string
-          example: iomaster_nr1
+        $ref: '#/components/parameters/originatorId'
       deviceId:
-        description: 'Id of the device (e.g.  (i.e. an IO-Link device, an IO-Port number)'
-        schema:
-          type: string
-          example: port1
+        $ref: '#/components/parameters/deviceId'
     subscribe:
+      description: >-
+        contains process data of the connected device
+      operationId: receiveDeviceProcessdata
       message:
         oneOf:
           - $ref: '#/components/messages/processdata_IOLink'
@@ -197,21 +152,15 @@ channels:
       "iolink/v1/devices/{deviceAlias}/events"
     parameters:
       originatorId:
-        description: >-
-          shall be the unique identifier of the originator and shall correspond
-          to the client id inside the MQTT message. It can be the ProductURI,
-          DNS name, IP address or MAC address of the device hosting the MQTT
-          publisher. By default the Hostname shall be used.
-        schema:
-          type: string
-          example: iomaster_nr1
+        $ref: '#/components/parameters/originatorId'
       deviceId:
-        description: 'Id of the device (e.g.  (i.e. an IO-Link device, an IO-Port number)'
-        schema:
-          type: string
-          example: port1
+        $ref: '#/components/parameters/deviceId'
     subscribe:
+      description: >-
+        contains events of the connected device
+      operationId: receiveDeviceEvents
       message:
+        description: 'TBD: Only the latest event all all events?'
         $ref: '#/components/messages/deviceEvents'
       bindings:
         mqtt:
