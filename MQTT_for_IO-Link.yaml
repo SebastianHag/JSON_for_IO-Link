@@ -6,8 +6,12 @@ info:
     This is the _AsyncAPI_ specification of MQTT topics by the IO-Link consortium.
   termsOfService: 'https://www.io-link.com'
   contact:
-    name: Markus Rentschler
-    email: markus.rentschler@murrelektronik.de
+    name: 'IO-Link Community'
+    email: info@io-link.com
+    url: 'http://www.io-link.com'
+  license:
+    name: tbd
+    url: 'http://www.io-link.com'
 servers:
   broker:
     url: 'api.iolink.com:{port}'
