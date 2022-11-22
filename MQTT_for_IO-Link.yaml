@@ -10,8 +10,8 @@ info:
     email: info@io-link.com
     url: 'http://www.io-link.com'
   license:
-    name: tbd
-    url: 'http://www.io-link.com'
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 servers:
   broker:
     url: 'api.iolink.com:{port}'
